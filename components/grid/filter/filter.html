@@ -1,0 +1,11 @@
+{{#if filter.type == 'sel'}}
+<select class="form-control" value='{{filter.val}}' on-change="changed" name="{{name}}">
+    {{#each filter.conf.opts:k}}
+    <option value="{{k}}">{{.}}</option>
+    {{/each}}
+</select>
+{{elseif filter.type == 'inp'}}
+<input class="form-control grid-filter-inp" type="text" value="{{filter.val}}" placeholder="{{filter.conf.placeholder}}" on-keyup="entered" name="{{name}}">
+{{elseif filter.type == 'daterange'}}
+<grid-filter-daterange startDate="{{filter.conf.start}}" endDate="{{filter.conf.end}}" val="{{filter.val}}" add_range="{{filter.conf.add_range}}" on-setrange="changed"/>
+{{/if}}

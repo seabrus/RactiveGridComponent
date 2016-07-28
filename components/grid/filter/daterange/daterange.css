@@ -1,0 +1,13 @@
+.grid-filter-daterange{
+  background: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+.grid-filter-daterange i.glyphicon-calendar {
+    float: right;
+}
+.grid-filter-daterange>span {
+    text-transform: initial !important;
+}

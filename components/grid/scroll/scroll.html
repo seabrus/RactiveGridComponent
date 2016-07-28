@@ -1,0 +1,25 @@
+<div class="slider-container" style="height:{{height}}; display:{{(show) ? 'inline-block' : 'none'}}">
+    <div class="scroll-button-up-container"
+        on-tap="scroll_up"
+        on-mousedown="continuous_scroll_up" on-mouseup="stop_scroll">
+    </div>
+    {{#if hasTouchEvents}}
+        <div class="scroll-slider-div" on-swipe="swipe_slider" data-swipe-velocity="0.1" style="height: {{scrollSliderHeight}};">
+            <input type="range" class="scroll-slider-input scroll-slider-width"
+                min="{{min}}" max="{{max}}" value="{{value}}" step="1"
+                on-input="slider_changed"
+                style="width: {{scrollSliderHeight}};">
+        </div>
+    {{else}}
+        <div class="scroll-slider-div" style="height: {{scrollSliderHeight}};">
+            <input type="range" class="scroll-slider-input scroll-slider-width"
+                min="{{min}}" max="{{max}}" value="{{value}}" step="1"
+                on-input="slider_changed"
+                style="width: {{scrollSliderHeight}};">
+        </div>
+    {{/if}}
+    <div class="scroll-button-down-container"
+        on-tap="scroll_down"
+        on-mousedown="continuous_scroll_down" on-mouseup="stop_scroll">
+    </div>
+</div>

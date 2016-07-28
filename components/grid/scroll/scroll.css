@@ -1,0 +1,195 @@
+
+/***** Slider for Scrolling - Jun 2016 *****/
+.component-height {
+  height: 540px;
+}
+
+.grid-table-container {
+  display: inline-block;
+  width: calc(100% - 21px);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.slider-container {
+  display: inline-block;
+  margin: 0 0 0 0; /* 0 0 5px 0; */
+  vertical-align: text-bottom;
+}
+
+.scroll-button-up-container:before {
+    content: "\e253";
+    color: #FF5402;
+    font-size: 9px;
+    margin-left: 3px; /* 4px */
+    cursor: pointer;
+}
+
+.scroll-button-down-container:before {
+    content: "\e252";
+    color: #FF5402;
+    font-size: 9px;
+    margin-left: 3px; /* 4px */
+    cursor: pointer;
+}
+
+
+.scroll-button-up-container {
+/*  background-image: url("assets/img/scroll-button-up.png"); */
+  background-image: none;
+  background-color: #fff;
+  font-family: 'Glyphicons Halflings';
+  width: 16px;
+  height: 16px;
+  margin: 0 0 5px 0px; /* -3px */
+}
+
+.scroll-button-down-container {
+    /* background-image: url("assets/img/scroll-button-down.png"); */
+    background-image: none;
+    background-color: #fff;
+    font-family: 'Glyphicons Halflings';
+    width: 16px;
+    height: 16px;
+    margin: 0px 0 0 0px;
+}
+
+.scroll-slider-div {
+  width: 16px;
+/*  height: 100px; */
+  margin: 0 0 0 0;
+}
+
+/* Input range style generator: http://danielstern.ca/range.css/             */
+/* https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/ */
+/* https://css-tricks.com/custom-interactive-range-inputs/                   */
+/* When using the style generator note that there are custom code insertions:
+    1). transform: rotate(90deg)
+    2). width for thumb, like this:
+      input[type=range].scroll-slider-width::-webkit-slider-thumb {
+        width: 20px;
+      }
+    There are 3 places with similar code below: for -webkit, -moz, and -ms.
+*/
+input[type=range].scroll-slider-input {
+  -webkit-appearance: none;
+  width: 100%;
+
+  margin: 0 0 0 17px;
+  -ms-transform: rotate(90deg);
+  -ms-transform: top left;
+  -o-transform: rotate(90deg);
+  -o-transform: top left;
+  -moz-transform: rotate(90deg);
+  -moz-transform: top left;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin: top left;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+input[type=range].scroll-slider-input:focus {
+  outline: none;
+}
+input[type=range].scroll-slider-input::-moz-focus-inner {
+  outline: 0;
+  border: 0;
+}
+
+input[type=range].scroll-slider-input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: #fff;
+  border-radius: 10px;
+  border: 0px solid #010101;
+}
+
+input[type=range].scroll-slider-input::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 1px solid #FF5402;
+  height: 5px;
+  border-radius: 10px;
+  background: #FF5402;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 1px;
+}
+input[type=range].scroll-slider-width::-webkit-slider-thumb {
+  width: 20px;
+}
+input[type=range].scroll-slider-input:focus::-webkit-slider-runnable-track {
+  background: #fff;
+}
+
+input[type=range].scroll-slider-input::-moz-range-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: #fff; /* #777777; */
+  border-radius: 10px;
+  border: 0px solid #010101;
+}
+input[type=range].scroll-slider-input::-moz-range-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 1px solid #FF5402; /* rgba(170, 170, 170, 0.57); */
+  height: 5px;
+  border-radius: 10px;
+  background: #FF5402; /* #eeeeee; */
+  cursor: pointer;
+}
+input[type=range].scroll-slider-width::-moz-range-thumb {
+  width: 20px;
+}
+
+input[type=range].scroll-slider-input::-ms-track {
+  width: 100%;
+  height: 7px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range].scroll-slider-input::-ms-fill-lower {
+  background: #6a6a6a;
+  border: 0px solid #010101;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+input[type=range].scroll-slider-input::-ms-fill-upper {
+  background: #fff; /* #777777; */
+  border: 0px solid #010101;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+}
+
+input[type=range].scroll-slider-input::-ms-thumb {
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  border: 1px solid #FF5402; /* rgba(170, 170, 170, 0.57); */
+  border-radius: 10px;
+  background: #FF5402; /* #eeeeee; */
+  cursor: pointer;
+  height: 5px;
+}
+input[type=range].scroll-slider-width::-ms-thumb {
+  width: 20px;
+}
+input[type=range].scroll-slider-input:focus::-ms-fill-lower {
+  background: #777777;
+}
+input[type=range].scroll-slider-input:focus::-ms-fill-upper {
+  background: #848484;
+}
+/***** ============================================ *****/
+/***** =========== End of Slider styles =========== *****/
+
+
+
+div#webtransfer_admin_app .component-grid.component-grid-height {
+    margin-top: 10px;
+}
+
+.scroll-slider-div input {
+    padding: 5px 5px;
+}

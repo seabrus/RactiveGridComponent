@@ -1,0 +1,14 @@
+<div class="comp-grid-sort {{#is_active(col,sorted)}}active{{/}}" on-click="clicked" on-tap="clicked">
+    {{#is_active(col,sorted)}}
+        {{#is_ask(sort_type)}}
+            <span class="glyphicon" aria-hidden="true">&nbsp;</span>
+            <icon name="triangle-bottom"/>
+        {{else}}
+            <icon name="triangle-top"/>
+            <span class="glyphicon" aria-hidden="true">&nbsp;</span>
+        {{/if}}
+    {{else}}
+    <icon name="triangle-top"/>
+    <icon name="triangle-bottom"/>
+    {{/}}
+</div>

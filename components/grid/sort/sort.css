@@ -1,0 +1,29 @@
+.comp-grid-sort {
+    display: inline-block;
+    font-size: 9px;
+    width: 10px;
+    opacity: 0.3;
+    float: left;
+    /*position: absolute;*/
+    /*left: 0;*/
+    z-index: 99;
+    margin-top: 5px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.comp-grid-sort span {
+    display: block;
+}
+
+.comp-grid-sort span.glyphicon-triangle-top {
+    color: #ff5105;
+}
+
+.comp-grid-sort span.glyphicon-triangle-bottom {
+    color: #3694f3;
+}
+
+.comp-grid-sort.active{
+    opacity: 1;
+}

@@ -1,0 +1,18 @@
+{{!
+    Here we have 4 vars:
+      val - (curent value),
+      col - (name of current col),
+      cols - (array cols settings),
+      row - (array of all data for curent row),
+      dop - custom additional info (if necessary)
+
+    See for more: grid.component.js#formatters.partual
+}}
+
+{{#if 2 == val}}
+    state 2
+{{elseif 3 == val}}
+    state 3
+{{else}}
+    worning
+{{/if}}

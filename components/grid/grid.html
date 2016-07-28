@@ -1,0 +1,114 @@
+<div class="component-grid component-grid-height">
+  <div class="content">
+  {{#if list}}
+  <div on-mousewheel="mouseWheel" class="component-border">
+    <div class="grid-table-container" style="height: {{tableHeight}}">
+      <table class="grid-table no-border-top">
+        <thead class="grid-thead">
+          <tr class="header-tr-label no-border-bottom">
+            {{#each cols:f}}
+            {{#if !hidden}}
+            <th class="gr_th_{{f}}" {{#w}}style="width: {{w}}"{{/}}>
+                <div class="sel-table">
+                <label>{{label}}</label>
+                {{#sort}}
+                <grid-sort col="{{f}}" on-clicked="sort_table"/>
+                {{/}}
+              </div>
+            </th>
+            {{/if}}
+            {{/each}}
+          </tr>
+          <tr class="header-tr-filter no-border-bottom">
+            {{#each cols:f}}
+            {{#if !hidden}}
+            <th class="gr_th_{{f}}">
+              <div class="sel-table">
+                {{#filter}}
+                <grid-filter filter="{{filter}}" name="{{f}}" on-changed="filter_changed"/>
+                {{/}}
+              </div>
+            </th>
+            {{/if}}
+            {{/each}}
+          </tr>
+        </thead>
+
+        <tbody class="grid-tbody" on-swipe="swipe_tbody" data-swipe-velocity="0.1">
+          {{#list:i}}
+          <tr on-click="row_clicked"{{#set_class(.)}} class="{{set_class(.)}}"{{/}}>
+            {{#.:c}}
+              {{#if !cols[c].hidden}}
+                <td class="td_{{c}}{{#if cols[c].hint}} hint-fade hint-top-s-med position-relative{{/if}}"{{#set_colspan(c, list[i])}} colspan="{{set_colspan(c, list[i])}}"{{/}} data-val="{{.}}"
+                  {{#if cols[c].hint}} data-hint="{{#if 'undefined' != typeof cols[c].format}}{{ formatters()[cols[c].format.name](.,cols[c].format.conf, c, cols, list[i]) }}{{else}}{{.}}{{/if}}"{{/if}}>
+                  {{#if 'undefined' != typeof cols[c].format}}
+                    {{#if 'partial' == cols[c].format.name && show_partual}}
+                      {{>formatters()[cols[c].format.name](.,cols[c].format.conf, c, cols, list[i]) {
+                        val: .,
+                        col: c,
+                        cols: cols,
+                        row: list[i],
+                        dop: cols[c].format.conf.dop
+                      } }}
+                    {{else}}
+                      {{ formatters()[cols[c].format.name](.,cols[c].format.conf, c, cols, list[i]) }}
+                    {{/if}}
+                  {{else}}
+                    {{.}}
+                  {{/if}}
+                </td>
+              {{/if}}
+            {{/}}
+          </tr>
+          {{/}}
+        </tbody>
+      </table>
+    </div> <!-- end of "grid-table-container" -->
+    {{#show_partual}}
+    <grid-scroll on-handleScroll="scroll" height="{{scrollHeight}}" show="{{scrollShow}}"
+               min="{{scrollMin}}" max="{{scrollMax}}" value="{{startFromRow}}" ratio="{{scrollRatio}}"> <!-- end of "slider-container" -->
+      {{/}}
+  </div>
+
+  {{else}}   <!-- 'list' is empty and/or data are loading -->
+  <table class="grid-table no-border-top">
+    <thead class="grid-thead">
+      <tr class="header-tr-label no-border-bottom">
+        {{#each cols:f}}
+        {{#if !hidden}}
+        <th class="gr_th_{{f}}" {{#w}}style="width: {{w}}"{{/}}>
+            <div class="sel-table">
+            <label>{{label}}</label>
+            {{#sort}}
+            <grid-sort col="{{f}}" on-clicked="sort_table"/>
+            {{/}}
+          </div>
+        </th>
+        {{/if}}
+        {{/each}}
+      </tr>
+      <tr class="header-tr-filter no-border-bottom">
+        {{#each cols:f}}
+        {{#if !hidden}}
+        <th class="gr_th_{{f}}">
+          <div class="sel-table">
+            {{#filter}}
+            <grid-filter filter="{{filter}}" name="{{f}}" on-changed="filter_changed"/>
+            {{/}}
+          </div>
+        </th>
+        {{/if}}
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody class="grid-tbody">
+
+    </tbody>
+  </table>
+  <panel-custom class="wabtransfer-list" type="primary">
+    <panel-heading><span class='center-block webtransfer-center'>{{empty_mess}}</span></panel-heading>
+  </panel-custom>
+  {{/if}}
+
+</div>
+</div>
