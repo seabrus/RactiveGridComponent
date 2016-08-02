@@ -95,8 +95,9 @@ cols: {
     });
     
 ```
-`getData` is a sample function, you should substitute it with your corresponding function.
+`getData` is a sample function, you should substitute it with your own function.
+
 That's it.
 
-More you can find in RactiveApp example (https://github.com/esbhome/RactiveApp)
+See more in the [RactiveApp example](https://github.com/esbhome/RactiveApp).
  
