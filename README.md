@@ -1,10 +1,10 @@
 # RactiveGridComponent
 This is a RactiveJS-based component with a viewport to display large arrays of data in a grid form.
 
-# How to Use It
+## How to Use It
 Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) (v. 0.7.3+) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
 
-## In the "Element"'s `data` property set a subproperty `cols`. Here is an example:
+#### In the "Element"'s `data` property set a subproperty `cols`. Here is an example:
 ```javascript
 cols: {
     account: { 
@@ -85,7 +85,7 @@ cols: {
  * }
  */
  
- ## After the element has been initiated and you received data from the server, set the grid store:
+ #### After the element has been initiated and you received data from the server, set the grid store:
 ```javascript
     var self = this;
     getData().then(function (res) {
