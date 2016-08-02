@@ -1,20 +1,33 @@
 # RactiveGridComponent
-Grid based on Ractive.js(v 0.7.3) with viewport developed for big data in grid store
+A data grid based on Ractive.js (v. 0.7.3) with a viewport developed to display a large arrays of data in a grid form
 
-#How it use
-You need use RactiveApp.js (https://github.com/esbhome/RactiveApp.js) and folder structure from RactiveApp (https://github.com/esbhome/RactiveApp)
+# How to Use It
+Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
 
-##In Element you need set to data var cols. Example of it:
+## In the "Element"'s `data` property set a subproperty `cols`. Here is an example:
+```javascript
 cols: {
-    account: {label: '__COL_NAME__', w: '15%', sort: true, filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All')}}}}, // filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All accounts')}, plaseholder: 'def select', auto_opts: false}} or filter: {type: 'daterange', val: 'All', conf: {start: '2014-06-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}
-    date: {label: '__COL_NAME__',       w: '15%', sort: true, filter: {type: 'daterange', val: 'All', conf: {start: '2014-01-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}}, format: {name: 'date'}}, // agg:{min, max, cnt, sum, avg, complex}
-    note: {label: '__COL_NAME__',w: '40%', sort: true, filter: {type: 'inp', val: ''}, format: {name: 'partial', conf: {template: 'wallet/operations/partials/description'}}}, // format:{name:'partial', conf:{template:'simpl or with /'}}
+    account: { 
+        label: 'email', // the column title
+        w: '15%',       // the column width
+        sort: true,     // whether to add or not icon for sorting
+        filter: {       // an input for filtering data in the column
+            type: 'sel',
+            val: 'all', 
+            conf: { opts: { all: _e('All') } }, 
+        },
+    }, 
+    // filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All accounts')}, plaseholder: 'def select', auto_opts: false}} or filter: {type: 'daterange', val: 'All', conf: {start: '2014-06-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}
+    date: {label: '__COL_NAME__',       w: '15%', sort: true, filter: {type: 'daterange', val: 'All', conf: {start: '2014-01-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}}, format: {name: 'date'}}, 
+    // agg:{min, max, cnt, sum, avg, complex}
+    note: {label: '__COL_NAME__',w: '40%', sort: true, filter: {type: 'inp', val: ''}, format: {name: 'partial', conf: {template: 'wallet/operations/partials/description'}}}, 
+    // format:{name:'partial', conf:{template:'simpl or with /'}}
     summa: {label: '__COL_NAME__',    w: '15%', sort: true, filter: {type: 'inp', val: ''}, agg: {complex:this.agg_sum}, format: {name: 'currency'}},
     status: {label: '__COL_NAME__',   w: '15%', sort: true, filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All')}}}},
     id: {hidden: true},
     metod: {hidden: true},
 },
-
+```
 /**
  * At the element or model where use this component you should set this data var with conf of grid component
  * cols: {
@@ -46,10 +59,13 @@ cols: {
  * }
  */
  
- ##And after your elemnt inited and you recive data ou need set store to grid like this:
-   this.findComponent('grid').setStore(__YOUR_DATA__);
-   
-Thats All.
+ ## After the element has been initiated and you received data from the server, set the grid store:
+```javascript
+    var data = getData();
+    this.findComponent('grid').setStore(data);
+```
+
+That's it.
 
 More you can find in RactiveApp example (https://github.com/esbhome/RactiveApp)
  
