@@ -1,26 +1,52 @@
 # RactiveGridComponent
-A data grid based on Ractive.js (v. 0.7.3) with a viewport developed to display a large arrays of data in a grid form
+This is a RactiveJS-based component with a viewport to display large arrays of data in a grid form.
 
 # How to Use It
-Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
+Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) (v. 0.7.3+) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
 
 ## In the "Element"'s `data` property set a subproperty `cols`. Here is an example:
 ```javascript
 cols: {
     account: { 
-        label: 'email', // the column title
+        label: 'Accounts', // the column title
         w: '15%',       // the column width
         sort: true,     // whether to add or not icon for sorting
         filter: {       // an input for filtering data in the column
-            type: 'sel',
-            val: 'all', 
+            type: 'sel',    // select input is used
+            val: 'all',     // Default option
             conf: { opts: { all: _e('All') } }, 
         },
     }, 
     // filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All accounts')}, plaseholder: 'def select', auto_opts: false}} or filter: {type: 'daterange', val: 'All', conf: {start: '2014-06-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}
-    date: {label: '__COL_NAME__',       w: '15%', sort: true, filter: {type: 'daterange', val: 'All', conf: {start: '2014-01-01', end: moment().format('YYYY-MM-DD'), add_range:{'All': [moment('2014-01-01'), moment()]}}}, format: {name: 'date'}}, 
+    date: { 
+        label: 'Date',       
+        w: '15%', 
+        sort: true, 
+        filter: { 
+            type: 'daterange', 
+            val: 'All', 
+            conf: { 
+                start: '2014-01-01', 
+                end: moment().format('YYYY-MM-DD'), 
+                add_range: { 'All': [moment('2014-01-01'), moment()] },
+            },
+        }, 
+        format: { name: 'date' },
+    }, 
     // agg:{min, max, cnt, sum, avg, complex}
-    note: {label: '__COL_NAME__',w: '40%', sort: true, filter: {type: 'inp', val: ''}, format: {name: 'partial', conf: {template: 'wallet/operations/partials/description'}}}, 
+    note: {
+        label: 'Notes',
+        w: '40%', 
+        sort: true, 
+        filter: {
+            type: 'inp',    // <input type ="text" ...> is used
+            val: ''
+        }, 
+        format: { 
+            name: 'partial', 
+            conf: { template: 'wallet/operations/partials/description' },
+        },
+    }, 
     // format:{name:'partial', conf:{template:'simpl or with /'}}
     summa: {label: '__COL_NAME__',    w: '15%', sort: true, filter: {type: 'inp', val: ''}, agg: {complex:this.agg_sum}, format: {name: 'currency'}},
     status: {label: '__COL_NAME__',   w: '15%', sort: true, filter: {type: 'sel', val: 'all', conf: {opts: {all: _e('All')}}}},
@@ -61,10 +87,15 @@ cols: {
  
  ## After the element has been initiated and you received data from the server, set the grid store:
 ```javascript
-    var data = getData();
-    this.findComponent('grid').setStore(data);
+    var self = this;
+    getData().then(function (res) {
+        Ractive.app.alert(res.message);
+        var data = res.data;
+        self.findComponent('grid').setStore(data);
+    });
+    
 ```
-
+`getData` is a sample function, you should substitute it with your corresponding function.
 That's it.
 
 More you can find in RactiveApp example (https://github.com/esbhome/RactiveApp)
