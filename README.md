@@ -1,8 +1,8 @@
 # RactiveGridComponent
-This is a RactiveJS-based component with a viewport to display large arrays of data in a grid form.
+This is a RactiveJS(v.0.7.3)-based component with a viewport to display large arrays of data in a grid form. 
 
 ## How to Use It
-Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) (v. 0.7.3) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
+Add [RactiveApp.js](https://github.com/esbhome/RactiveApp.js) and use the folder structure from [RactiveApp](https://github.com/esbhome/RactiveApp).
 
 #### In the "Element"'s `data` property set a subproperty `cols`. Here is an example:
 ```javascript
